@@ -1,0 +1,57 @@
+
+{% extends 'receptionist/receptionistbase.html' %}
+{% block content %}
+
+
+<div class="bs-docs-example">
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Name </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone no
+                </th>
+               
+                <th>
+                    add prescription
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>
+                    {{i.5}}
+                </td>
+
+
+                <td>
+                    {{i.6}}
+                </td>
+                <td>
+                    {{i.7}}
+                </td>
+               
+                <td>
+                   <a href="/discharge/?id={{i.1}}">discharge</a>                </td>
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% if msg %}
+	<script>alert('patient admitted');</script>
+	{% endif %}
+
+
+
+{% endblock %}

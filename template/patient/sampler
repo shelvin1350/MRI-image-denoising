@@ -1,0 +1,10 @@
+<div class="card">
+    <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" style="width:20%">
+    <div class="container">
+      Name: <h4 style="font-family:serif; font-weight:bold; font-size:30px;"><b> {{data.1}}</b></h4>
+      <p style="font-family:serif; font-weight:bold; font-size:20px;">Patient Id: {{data.0}}</p>
+      <p style="font-family:serif; font-weight:bold; font-size:20px;">Email Id: {{data.2}}</p>
+      <p style="font-family:serif; font-weight:bold; font-size:20px;">Phone Number: {{data.3}}</p>
+
+    </div>
+  </div>

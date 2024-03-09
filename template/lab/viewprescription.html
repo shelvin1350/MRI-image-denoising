@@ -1,0 +1,57 @@
+{% extends 'receptionist/receptionistbase.html' %}
+{% block content %}
+
+
+<div class="bs-docs-example">
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Details </th>
+                <th>
+                    prescription
+                </th>
+                <th>
+                   Admit
+                </th>
+                <th>
+                    remove
+                 </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                
+                <td>
+                    {{data.3}}
+                </td>
+                <td>
+                    {{data.4}}
+                </td>
+                <td>
+                    
+                    <a href="/admit/?id={{data.1}}">admit</a>
+                </td>
+                <td>
+                    
+                    <a href="/removepatient/?id={{data.1}}">remove</a>
+                </td>
+                <td>
+                    
+                    <a href="/createbill/?id={{data.1}}">Bill</a>
+                </td>
+
+                
+            </tr>
+           
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+{% endblock %}

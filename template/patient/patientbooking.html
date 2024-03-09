@@ -1,0 +1,155 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>MRI Image Denoising</title>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+</style>
+</head>
+<body>
+
+ <!-- Links (sit on top) -->
+ <div class="sticky w-full top-0 left-0 z-10 shadow-xl">
+  <div class="grid w-full grid-cols-4 bg-gradient-to-tr from-black to-gray-700 ">
+    <div class="w-full  grid place-items-center">
+      <a href="/patienthome/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl">Home</a>
+    </div>
+    <div class="w-full grid place-items-center">
+      <a href="/selectspecification/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex bg-gray-600 rounded-md items-center justify-center text-xl" >Book now</a>
+    </div>
+    <div class="w-full grid place-items-center">
+      <a href="/profile/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl">Profile</a>
+    </div>
+    <div class="w-full grid place-items-center">
+      <a href="/index/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl">Logout</a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Contact/Area Container -->
+<div class="" id="" style="">
+  <div class="" style="">
+
+
+
+    <center>
+
+		<br><br><br><br><br>
+<div>
+<div class="card">
+    <div class="container">
+      <div class="grid">
+        <div class="text-center grid h-full mt-2 mb-96" >
+          <div style = "margin-top: -130px;" class=" w-full grid place-items-center " >
+              
+            {% for d in data %}
+                    <div class="w-4/5  border-4 border-white bg-gradient-to-tr from-[#163B50] to-[#05263B] shadow-2xl rounded-xl bg-transparent">
+                      <form method="post" class="grid justify-items-center">
+                      <br><br><br>
+                        {% csrf_token %}
+                        
+                      <div class="grid grid-cols-2 mb-3">
+                        <div class = "text-2xl font-bold text-white">
+                          <p> Doctor's Name: </p>
+                        </div>
+                         <input class="w-60 ml-2 px-3 py-2.5 rounded-md bg-gray-200" type="text" disabled  value = "{{d.1}}" ><br>
+                      </div>
+
+
+                      <div class="grid grid-cols-2 mb-3">
+                        <div class = "text-2xl font-bold text-white">
+                          <p> Doctor's ID: </p>
+                        </div>
+                         <input class="w-60 ml-2 px-3 py-2.5 rounded-md bg-gray-200" type="text" disabled value = "{{d.0}}" ><br>
+                      </div>
+                      
+
+                      <div class="grid grid-cols-2 mb-3">
+                        <div class = "text-2xl font-bold text-white">
+                          <p> Phone no: </p>
+                        </div>
+                         <input class="w-60 ml-2 px-3 py-2.5 rounded-md bg-gray-200" type="text" disabled value = "{{d.3}}" ><br>
+                      </div>
+                      
+                      
+
+                      <div class="grid grid-cols-2 mb-3">
+                        <div class = "text-2xl font-bold text-white">
+                          <p> Email ID: </p>
+                        </div>
+                         <input class="w-60 ml-2 px-3 py-2.5 rounded-md bg-gray-200" type="text" disabled value = "{{d.2}}" ><br>
+                      </div>
+
+
+
+                      <div class="grid grid-cols-2 mb-3">
+                        <div class = "text-2xl font-bold text-white">
+                          Department: </p>
+                        </div>
+                         <input class="w-60 ml-2 px-3 py-2.5 rounded-md bg-gray-200" type="text" disabled value = "{{d.4}}" ><br>
+                      </div>
+                      <div class="grid grid-cols-2 mb-3">
+                        <div class = "text-2xl font-bold text-white">
+                          <p> Specification: </p>
+                        </div>
+                         <input class="w-60 ml-2 px-3 py-2.5 rounded-md bg-gray-200" type="text" disabled value = "{{d.5}}" ><br>
+                      </div>
+                      {% csrf_token %}
+								<input type="hidden" name="pid" readonly value="{{pid}}" required required="">
+								<input type="hidden" name="doctor" readonly value="{{d.0}}" required required="">
+                      <div class="bg-gray-200 w-fit px-2 mb-8 rounded-lg">
+                        <p><input class="py-2.5 px-3.5 font-bold cursor-pointer" type="submit" value="Book Now"></p>
+                    </div>
+                    
+                    
+                      
+                    </div>
+                  </div>
+        </div>
+        {% endfor %}
+      </div>
+
+
+    </div>
+  </div>
+		  </div>
+		<br></center>
+    {% if msg %}
+<script>
+	alert('{{msg}}')
+  window.location.href = "/patienthome/";
+</script>
+{% endif %}
+
+{% endblock %}
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+
+<footer>
+  <div class="bg-black sticky h-40 mt-20 text-white grid place-items-center justify-items-start">
+    <div class="w-1/3 text-center ">
+      <div class="grid grid-cols-4 text-nowrap">
+        <a href="/patienthome/">Home</a>
+        <a href="/selectspecification/">Book Now</a>
+        <a href="/profile/" class="pl-9">Profile</a>
+        <a href="/index/" class="pl-9">Logout</a>
+     </div>
+    </div>
+  </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends 'doctor/doctorbase.html' %}
+{% block content %}
+
+
+<div class="bs-docs-example">
+    <table class="table" border="2" cellspadding="2" , cellpadding="2" style="margin-left: 44%;">
+        <thead>
+            <tr>
+
+                <th>Name </th>
+                <td>{{i.6}}</td>
+            </tr>
+
+            <tr>
+                <th>
+                    Phone no
+                </th>
+                <td>{{i.8}}</td>
+            </tr>
+            <tr>
+                <th>
+                    Image
+                </th>
+
+
+                <td>
+                    <img src="../static{{i.4}}">
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>
+                    Clear
+                </th>
+
+
+                <td>
+                    <a href="/clearimage?image={{i.4}}">Clear image</a>
+                </td>
+
+            </tr>
+        </thead>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+{% endblock %}

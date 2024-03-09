@@ -1,0 +1,117 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MRI Image Denoising</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+  <style>
+    body,
+    html {
+      height: 100%;
+      font-family: "Inconsolata", sans-serif;
+      background-image: url("{% static '/images/bg.jpg' %}");
+      background-size: cover;
+    }
+
+    .bgimg {
+      background-position: center;
+      background-size: cover;
+      background-image: url("{% static '/images/doctor.jpg' %}");
+      min-height: 100%;
+    }
+
+    .menu {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Links (sit on top) -->
+  <div class="w3-top">
+    <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="/adminhome/" class="w3-button w3-block w3-black" style="font-family=serif">HOME</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="/adddoctor/" class="w3-button w3-block w3-black">Add Doctor</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="/labreg/" class="w3-button w3-block w3-black">Add Lab</a>
+    </div>
+      <div class="w3-col s3">
+      <a href="/adminviewdoctors/" class="w3-button w3-block w3-black">Doctors</a>
+    </div>
+      <div class="w3-col s3">
+      <a href="/viewlab/" class="w3-button w3-block w3-black">Lab</a>
+    </div>
+      <div class="w3-col s3">
+      <a href="/index/" class="w3-button w3-block w3-black">Log Out</a>
+    </div>
+
+  </div>
+  </div>
+
+
+  <!-- Contact/Area Container -->
+  <div class="w3-container" id="where" style="padding-bottom:32px;">
+    <div class="w3-content" style="max-width:700px">
+
+
+
+
+      <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+      <form method="post">
+        <br><br><br>
+        {% csrf_token %}
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Enter your name" name="name" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Enter your email" name="email" required></p>
+		  <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Enter your phone" name="phoneno" minlength="10" maxlength="10" pattern="[0-9]+" required></p>
+		  <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Qualification" name="qualification" pattern="[a-z A-Z]+" required></p>
+
+        <center>
+          <p><input class="w3-button w3-black" type="submit" value="Register Now"></input></p>
+        </center>
+      </form>
+      {% if msg %}
+      <script>
+        alert('{{msg}}')
+      </script>
+      {% endif %}
+
+      {% endblock %}
+    </div>
+  </div>
+
+  <!-- End page content -->
+  </div>
+
+
+  <script>
+    // Tabbed Menu
+    function openMenu(evt, menuName) {
+      var i, x, tablinks;
+      x = document.getElementsByClassName("menu");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+      }
+      document.getElementById(menuName).style.display = "block";
+      evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+    }
+    document.getElementById("myLink").click();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!-- MRI Image Denoising Webpage -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MRI Image Denoising</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="bg-orange-50 ">
+
+  <div class="sticky w-full top-0 left-0 z-10 h-fit shadow-xl">
+    <div class="grid w-full grid-cols-3 bg-gradient-to-tr from-black to-gray-700 ">
+      <div class="w-full  grid place-items-center">
+        <a href="/index/" class="p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-[gray-600] hover:rounded-md items-center justify-center text-xl">Home</a>
+      </div>
+      <div class="w-full grid place-items-center">
+        <a href="/login/" class="p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl" >Login</a>
+      </div>
+      <div class="w-full grid place-items-center">
+        <a href="/addpatient/" class="p-1.5 mt-4 mb-4 px-12 w-fit text-white flex bg-gray-600 rounded-md items-center justify-center text-xl">Patient Registration</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact/Area Container -->
+  <div class="grid">
+    <div class="text-center grid h-full mt-2 mb-96" id="where" style="padding-bottom:32px;">
+      <div class="w-full grid place-items-center h-full">
+        <div class="w-1/2 py-24 border-4 border-white bg-gradient-to-tr from-[#163B50] to-[#05263B] shadow-2xl rounded-xl ">
+          <form method="post" class="grid justify-items-center">
+            <br><br><br>
+            {% csrf_token %}
+            <h1 class="text-center text-5xl font-serif mb-10 font-bold text-gray-300">Registration</h1>
+            <input class="w-1/2 px-3 py-2.5 rounded-md bg-gray-200" type="text" placeholder="Enter your name" required name="name"><br>
+            <input class="w-1/2 px-3 py-2.5 rounded-md bg-gray-200" type="email" placeholder="Email" required name="email"><br>
+            <input class="w-1/2 px-3 py-2.5 rounded-md" type="text" name="phoneno" placeholder="Phoneno" minlength="10" maxlength="10" pattern="[0-9]+" required><br>
+            <div class="bg-gray-200 w-fit px-2  rounded-lg">
+              <p><input class="py-2.5 px-3.5 font-bold cursor-pointer" type="submit" value="Register now"></p>
+            </div>
+          </form>
+          {% if msg %}
+          <script>
+            alert('{{msg}}')
+          </script>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black bottom-0 w-full text-white">
+    <div class="text-center py-6">
+      <div class="grid grid-cols-1 md:grid-cols-3">
+        <a href="/index/" class="py-2">Home</a>
+        <a href="/login/" class="py-2">Login</a>
+        <a href="/addpatient/" class="py-2">Patient Registration</a>
+     
+      </div>
+   
+    </div>
+  </footer>
+    
+
+</body>
+
+</html>

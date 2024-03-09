@@ -1,0 +1,198 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>MRI Image Denoising</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+  background-image: url("{% static '/images/download.jpg' %}");
+    background-size: cover;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("{% static '/images/doctor.jpg' %}");
+  min-height: 100%;
+}
+
+.menu {
+  display: none;
+}
+    .container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+table {
+	width: 1000px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+th {
+	text-align: left;
+}
+
+thead {
+	th {
+		background-color: #55608f;
+	}
+}
+
+tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+			}
+		}
+	}
+}
+
+</style>
+</head>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="/adminhome/" class="w3-button w3-block w3-black" style="font-family=serif">HOME</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="/adddoctor/" class="w3-button w3-block w3-black">Add Doctor</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="/labreg/" class="w3-button w3-block w3-black">Add Lab</a>
+    </div>
+      <div class="w3-col s3">
+      <a href="/adminviewdoctors/" class="w3-button w3-block w3-black">Doctors</a>
+    </div>
+      <div class="w3-col s3">
+      <a href="/viewlab/" class="w3-button w3-block w3-black">Lab</a>
+    </div>
+      <div class="w3-col s3">
+      <a href="/index/" class="w3-button w3-block w3-black">Log Out</a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+
+<center>
+
+<br><br><br><br>
+ <div class="container">
+	<table border="1">
+	 <thead>
+            <tr>
+
+                <th>Name </th>
+                <th>Email</th>
+                <th>phoneno</th>
+
+                <th>qualification</th>
+                <th>Remove</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>
+                    {{i.1}}
+                </td>
+
+
+                <td>
+                    {{i.2}}
+                </td>
+                <td>
+                    {{i.3}}
+                </td>
+                <td>
+                    {{i.4}}
+                </td>
+
+
+                <td>
+                    <a href="/removedoctors?id={{i.0}}">REMOVE</a>
+                </td>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+</div>
+</center>
+    {% if msg %}
+<script>
+	alert('{{msg}}')
+</script>
+{% endif %}
+
+{% endblock %}
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>

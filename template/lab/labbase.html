@@ -1,0 +1,86 @@
+<style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+     background-color: rgb(194, 182, 182);
+	 background-image: -o-linear-gradient();
+    }
+    
+    .topnav {
+      overflow: hidden;
+      background-color: rgb(24, 99, 52);
+    }
+    .header{
+        float: right;
+        margin-right: 100px;
+
+    }
+    
+    .header a {
+        float: right;
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .header a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .header a.active {
+      background-color: #04AA6D;
+      color: white;
+    }
+    .hname h1
+    {
+        color: white;
+        margin-top: 40px;
+        margin-left: 100px;
+    }
+    </style>
+    
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>MRI IMAGE DENOISING</title>
+
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
+  </head>
+  <body>
+
+<!--header-->
+<div class="topnav">
+    <div class="hname"><h1>MRI IMAGE DENOISING</h1></div>
+    <div class="header">
+		<a class="nav-link" href="/labhome/">Home
+		<a class="nav-link" href="/viewmrirequest/">MRI REQUEST</a>
+	
+			<a class="nav-link" href="/labchangepassword/">Change Password</a>
+			<a class="nav-link" href="/index/">Log Out</a>
+
+
+</div>	
+ </div> 
+
+<center>
+<h1>WELCOME</h1>
+</center>
+</body>
+
+</html>
+
+    {% block content %}
+    {% endblock %}
