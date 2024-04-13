@@ -8,79 +8,54 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
 
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-image: url("{% static '/images/doctor.jpg' %}");
-  min-height: 100%;
-}
-
-.menu {
-  display: none;
-}
 </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
-<!-- Links (sit on top) -->
-<div class="sticky w-full top-0 left-0 z-10 shadow-xl">
-  <div class="grid w-full grid-cols-4 bg-gradient-to-tr from-black to-gray-700">
-    <div class="w-full  grid place-items-center">
-      <a href="/doctorhome/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl" style="font-family: serif;">Home</a>
-    </div>
-    <div class="w-full grid place-items-center">
-      <a href="/viewpatientsbydoc/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex bg-gray-600 rounded-md items-center justify-center text-xl">Add Prescription</a>
-    </div>
-    <div class="w-full grid place-items-center">
-      <a href="/viewmripatients/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex bg-gray-600 rounded-md items-center justify-center text-xl">MRI Patients</a>
-    </div>
-    <div class="w-full grid place-items-center">
-      <a href="/index/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl">Log Out</a>
+ <!-- Links (sit on top) -->
+ <div class="sticky top-0 z-50 shadow-lg bg-gradient-to-tr from-black to-gray-700">
+  <div class="container mx-auto px-4 py-4">
+    <div class="grid grid-cols-4 gap-4">
+      <a href="/doctorhome/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Home</a>
+      <a href="/viewpatientsbydoc/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Add Prescription</a>
+      <a href="/viewmripatients/" class="py-2 px-4 text-white flex items-center justify-center bg-gray-600 rounded-md text-lg">MRI Patients</a>
+      <a href="/index/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Logout</a>
     </div>
   </div>
 </div>
 
-<!-- Header with image -->
-
-<!-- Add a background color and large text to the whole page -->
-<div class="w3-sand w3-grayscale w3-large">
-
 <!-- Contact/Area Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
+<div class="container mx-auto px-4 py-8">
+  
 
-    <center>
-
-    <br><br><br><br>
-    <div class="container">
-      <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gradient-to-tr from-blue-900 to-gray-700 text-white">
-          <tr>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Name</th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Email</th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Phone no</th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Result</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-          {% for i in data %}
-          <tr>
-            <td class="px-6 py-4 whitespace-nowrap">{{ i.6 }}</td>
-            <td class="px-6 py-4 whitespace-nowrap">{{ i.7 }}</td>
-            <td class="px-6 py-4 whitespace-nowrap">{{ i.8 }}</td>
-            <td class="px-6 py-4 whitespace-nowrap"><a href="/viewmriresult/?id={{ i.0 }}" class="text-blue-500 hover:underline">VIEW RESULT</a></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
+  <div class="text-center mb-8 mt-7">
+    <h2 class="text-2xl font-bold text-blue-800">Patient's Information</h2>
   </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full bg-white rounded-lg shadow-lg">
+      <thead>
+        <tr class="bg-gradient-to-tr from-blue-900 to-gray-700 text-white">
+          <th class="px-6 py-3">Name</th>
+          <th class="px-6 py-3">Email</th>
+          <th class="px-6 py-3">Phone no</th>
+          <th class="px-6 py-3">Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr class="bg-gray-100">
+          <td class="border px-6 py-4">{{ i.6 }}</td>
+          <td class="border px-6 py-4">{{ i.7 }}</td>
+          <td class="border px-6 py-4">{{ i.8 }}</td>
+          <td class="border px-6 py-4"><a href="/viewmriresult/?id={{ i.0 }}" class="text-blue-500 hover:underline">VIEW RESULT</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
 </body>

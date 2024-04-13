@@ -1,5 +1,4 @@
 {% load static %}
-{% block content %}
 <!DOCTYPE html>
 <html>
 
@@ -7,110 +6,63 @@
   <title>MRI Image Denoising</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-  <style>
-    body,
-    html {
-      height: 100%;
-      font-family: "Inconsolata", sans-serif;
-      background-image: url("{% static '/images/bg.jpg' %}");
-      background-size: cover;
-    }
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    .bgimg {
-      background-position: center;
-      background-size: cover;
-      background-image: url("{% static '/images/doctor.jpg' %}");
-      min-height: 100%;
-    }
-
-    .menu {
-      display: none;
-    }
-  </style>
 </head>
 
-<body>
+<body class="bg-gray-100">
 
-  <!-- Links (sit on top) -->
-  <div class="w3-top">
-    <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="/adminhome/" class="w3-button w3-block w3-black" style="font-family=serif">HOME</a>
+  <div class="sticky top-0 z-50 shadow-lg bg-gradient-to-tr from-black to-gray-700">
+    <div class="container mx-auto px-4 py-4">
+      <div class="grid grid-cols-7 gap-1">
+        <a href="/adminhome/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Home</a>
+        <a href="/adddoctor/" class="py-2 px-4 text-white flex items-center justify-center bg-gray-600 rounded-md text-lg">Add Doctor</a>
+        <a href="/labreg/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Add Lab</a>
+        <a href="/adminviewdoctors/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Doctors</a>
+        <a href="/viewlab/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Lab</a>
+        <a href="/adminchangepassword/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Change Password</a>
+        <a href="/index/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Log Out</a>
+      </div>
     </div>
-    <div class="w3-col s3">
-      <a href="/adddoctor/" class="w3-button w3-block w3-black">Add Doctor</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="/labreg/" class="w3-button w3-block w3-black">Add Lab</a>
-    </div>
-      <div class="w3-col s3">
-      <a href="/adminviewdoctors/" class="w3-button w3-block w3-black">Doctors</a>
-    </div>
-      <div class="w3-col s3">
-      <a href="/viewlab/" class="w3-button w3-block w3-black">Lab</a>
-    </div>
-      <div class="w3-col s3">
-      <a href="/index/" class="w3-button w3-block w3-black">Log Out</a>
-    </div>
-
   </div>
-  </div>
-
-
   <!-- Contact/Area Container -->
-  <div class="w3-container" id="where" style="padding-bottom:32px;">
-    <div class="w3-content" style="max-width:700px">
-
-
-
-
-      <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+  <div class="container mx-auto px-4 py-8">
+    <div class="w-full max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-blue-800">Register</h2>
+      </div>
       <form method="post">
-        <br><br><br>
         {% csrf_token %}
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Enter your name" name="name" required></p>
-        <p><input class="w3-input w3-padding-16 w3-border" type="email" placeholder="Enter your email" name="email" required></p>
-		  <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Enter your phone" name="phoneno" minlength="10" maxlength="10" pattern="[0-9]+" required></p>
-		  <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Specification" name="specification" pattern="[a-z A-Z]+" required></p>
-		  <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Qualification" name="qualification" pattern="[a-z A-Z]+" required></p>
-
-        <center>
-          <p><input class="w3-button w3-black" type="submit" value="Register Now"></input></p>
-        </center>
+        <div class="mb-4">
+          <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" placeholder="Name" name="name" required>
+        </div>
+        <div class="mb-4">
+          <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="email" placeholder="Email" name="email" required>
+        </div>
+        <div class="mb-4">
+          <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="tel" placeholder="Phone Number" name="phoneno" pattern="[0-9]{10}" required>
+        </div>
+        <div class="mb-4">
+          <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" placeholder="Specification" name="specification" required>
+        </div>
+        <div class="mb-4">
+          <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" type="text" placeholder="Qualification" name="qualification" required>
+        </div>
+        <div class="text-center">
+          <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Register Now</button>
+        </div>
       </form>
-      {% if msg %}
-      <script>
-        alert('{{msg}}')
-      </script>
-      {% endif %}
-
-      {% endblock %}
     </div>
+    {% if msg %}
+    <script>
+      alert('{{msg}}')
+    </script>
+    {% endif %}
   </div>
 
   <!-- End page content -->
   </div>
 
-
-  <script>
-    // Tabbed Menu
-    function openMenu(evt, menuName) {
-      var i, x, tablinks;
-      x = document.getElementsByClassName("menu");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablink");
-      for (i = 0; i < x.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
-      }
-      document.getElementById(menuName).style.display = "block";
-      evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-    }
-    document.getElementById("myLink").click();
-  </script>
 
 </body>
 

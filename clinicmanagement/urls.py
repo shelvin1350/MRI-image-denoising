@@ -40,6 +40,7 @@ urlpatterns = [
     path('adminchangepassword/', views.adminchangepassword),
     path('viewlab/', views.viewlab),
     path('removedoctors/', views.removedoctors),
+    path('removelab/', views.removelab),
     path('addlab/', views.labreg),
 
 

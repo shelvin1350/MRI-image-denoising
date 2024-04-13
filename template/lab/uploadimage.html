@@ -7,66 +7,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-  background-image: url("{% static '/images/download.jpg' %}");
-    background-size: 2000px 2800px;
-	background-repeat: no-repeat;
-}
 
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-color: url("{% static '/images/doctor.jpg' %}");
-  min-height: 100%;
-}
-
-.menu {
-  display: none;
-}
-</style>
 </head>
 <body>
 
 <!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="/labhome/" class="w3-button w3-block w3-black" style="font-family=serif">HOME</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="/viewmrirequest/" class="w3-button w3-block w3-black">MRI REQUEST</a>
-    </div>
 
-      <div class="w3-col s3">
-      <a href="/index/" class="w3-button w3-block w3-black">Log Out</a>
+<div class="sticky top-0 z-50 shadow-lg bg-gradient-to-tr from-black to-gray-700">
+  <div class="container mx-auto px-4 py-4">
+    <div class="grid grid-cols-4 gap-4">
+      <a href="/labhome/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Home</a>
+      <a href="/viewmrirequest/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">MRI Request</a>
+      
+      <a href="/index/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Logout</a>
     </div>
+  </div>
+</div>
+<div class="container mx-auto px-4 py-8">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold text-blue-800">Add Image</h2>
+  </div>
 
+  <div class="w-full max-w-md mx-auto">
+    <form method="post" enctype="multipart/form-data" class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      {% csrf_token %}
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+          Select Image
+        </label>
+        <input type="file" name="image" id="image" class="bg-white appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required="">
+      </div>
+      <div class="text-center">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          Upload Now
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 
-
-<!-- Contact/Area Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-
-
-
-
-<form method="post" enctype="multipart/form-data">
-        <br><br><br><br<br>
-        {% csrf_token %}
-<div style="background: white; margin-left:-10px; border-radius:10px; margin-top:100px;">
-	<br><h1 style="font-family: sans serif;  text-align:center;">&nbsp;&nbsp;Add Image </b></h1>&nbsp;&nbsp;
-	<div>&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="image" placeholder="image.." required=""></div>
-        <center>
-          <p><input class="w3-button w3-black" type="submit" value="Upload Now"></input></p><br>
-        </center>
-      </form>
-</div>
 </center>
     {% if msg %}
 <script>

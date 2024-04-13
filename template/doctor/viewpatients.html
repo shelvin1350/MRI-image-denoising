@@ -1,183 +1,86 @@
+
+<!-- Links (sit on top) -->
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>MRI Image Denoising</title>
 <meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
 <style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-  background-image: url("{% static '/images/download.jpg' %}");
-    background-size: cover;
-}
-
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-image: url("{% static '/images/doctor.jpg' %}");
-  min-height: 100%;
-}
-
-.menu {
-  display: none;
-}
-    .container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-table {
-	width: 800px;
-	border-collapse: collapse;
-	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-th,
-td {
-	padding: 15px;
-	background-color: rgba(255,255,255,0.2);
-	color: #fff;
-}
-
-th {
-	text-align: left;
-}
-
-thead {
-	th {
-		background-color: #55608f;
-	}
-}
-
-tbody {
-	tr {
-		&:hover {
-			background-color: rgba(255,255,255,0.3);
-		}
-	}
-	td {
-		position: relative;
-		&:hover {
-			&:before {
-				content: "";
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: -9999px;
-				bottom: -9999px;
-				background-color: rgba(255,255,255,0.2);
-				z-index: -1;
-			}
-		}
-	}
-}
 
 </style>
 </head>
 <body>
 
-<!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="/doctorhome/" class="w3-button w3-block w3-black" style="font-family=serif">HOME</a>
+ <!-- Links (sit on top) -->
+ <div class="sticky w-full top-0 left-0 z-10 shadow-xl">
+  <div class="grid w-full grid-cols-4 bg-gradient-to-tr from-black to-gray-700 ">
+    <div class="w-full  grid place-items-center">
+      <a href="/doctorhome/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl">Home</a>
     </div>
-    <div class="w3-col s3">
-      <a href="/viewpatientsbydoc/" class="w3-button w3-block w3-black">Add Prescription</a>
+    <div class="w-full grid place-items-center">
+      <a href="/viewpatientsbydoc/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex bg-gray-600 rounded-md items-center justify-center text-xl" >Add Prescription</a>
     </div>
-    <div class="w3-col s3">
-      <a href="/viewmripatients/" class="w3-button w3-block w3-black">MRI Patients</a>
+    <div class="w-full grid place-items-center">
+      <a href="/viewmripatients/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl">MRI Patients</a>
     </div>
-      <div class="w3-col s3">
-      <a href="/index/" class="w3-button w3-block w3-black">Log Out</a>
+    <div class="w-full grid place-items-center">
+      <a href="/index/" class=" p-1.5 mt-4 mb-4 px-12 w-fit text-white flex hover:bg-gray-600 hover:rounded-md items-center justify-center text-xl">Logout</a>
+    </div>
+
+  </div>
+</div>
+<!-- Contact/Area Container -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content mx-auto" style="max-width:700px">
+
+    <div class="text-center my-8">
+      <h2 class="text-2xl font-bold text-blue-800">Patient's Information</h2>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full bg-white rounded-lg shadow-lg">
+        <thead>
+          <tr class="bg-gradient-to-tr from-black to-gray-700 text-white">
+            <th class="px-4 py-2">Name</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Phone no</th>
+            <th class="px-4 py-2">Action</th>
+          </tr>
+        </thead>
+        <div >
+        <tbody>
+          {% for i in data %}
+          <tr class = "bg-gray-100">
+            <td class="border px-4 py-2">{{ i.5 }}</td>
+            <td class="border px-4 py-2">{{ i.6 }}</td>
+            <td class="border px-4 py-2">{{ i.7 }}</td>
+            <td class="border px-4 py-2">
+              <a href="/addreference/?id={{ i.1 }}" class="text-blue-500 hover:text-blue-700">REFER FOR SCANNING</a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% for i in data1 %}
+          <tr class="bg-gray-100">
+            <td class="border px-4 py-2">{{ i.5 }}</td>
+            <td class="border px-4 py-2">{{ i.6 }}</td>
+            <td class="border px-4 py-2">{{ i.7 }}</td>
+            <td class="border px-4 py-2 text-blue-500">REFERENCED FOR MRI</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </div>
+      </table>
     </div>
 
   </div>
 </div>
 
-
-<!-- Contact/Area Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-
-<center>
-
-<br><br><br><br>
- <div class="container">
-	<table>
-		<thead>
-            <tr>
-
-                <th>Name </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Phone no
-                </th>
-
-
-                <th>
-                    REFER
-                </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in data %}
-            <tr>
-                <td>
-                    {{i.5}}
-                </td>
-
-
-                <td>
-                    {{i.6}}
-                </td>
-                <td>
-                    {{i.7}}
-                </td>
-
-
-                   <td>
-                    <a href="/addreference/?id={{i.1}}">REFER FOR SCANNING</a> </td>
-
-            </tr>
-            {% endfor %}
-
-
-            {% for i in data1 %}
-            <tr>
-                <td>
-                    {{i.5}}
-                </td>
-
-
-                <td>
-                    {{i.6}}
-                </td>
-                <td>
-                    {{i.7}}
-                </td>
-
-
-                   <td>
-                   REFERENCED FOR MRI
-
-            </tr>
-            {% endfor %}
-
-        </tbody>
-        </table>
-</div>
 </center>
     {% if msg %}
 <script>

@@ -1,212 +1,62 @@
 {% load static %}
-{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
-<title>MRI Image Denoising</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-  background-image: url("{% static '/images/download.jpg' %}");
-    background-size: cover;
-}
-
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-image: url("{% static '/images/doctor.jpg' %}");
-  min-height: 100%;
-}
-
-.menu {
-  display: none;
-}
-    .container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-table {
-	width: 1000
-
-
-	
-	 px;
-	border-collapse: collapse;
-	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-th,
-td {
-	padding: 15px;
-	background-color: rgba(255,255,255,0.2);
-	color: #fff;
-}
-
-th {
-	text-align: left;
-}
-
-thead {
-	th {
-		background-color: #55608f;
-	}
-}
-
-tbody {
-	tr {
-		&:hover {
-			background-color: rgba(255,255,255,0.3);
-		}
-	}
-	td {
-		position: relative;
-		&:hover {
-			&:before {
-				content: "";
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: -9999px;
-				bottom: -9999px;
-				background-color: rgba(255,255,255,0.2);
-				z-index: -1;
-			}
-		}
-	}
-}
-
-</style>
+    <title>MRI Image Denoising</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <style>
+        /* Add any custom styles here */
+    </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
-<!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="/labhome/" class="w3-button w3-block w3-black" style="font-family=serif">HOME</a>
+<div class="sticky top-0 z-50 shadow-lg bg-gradient-to-tr from-black to-gray-700">
+    <div class="container mx-auto px-4 py-4">
+        <div class="grid grid-cols-3 gap-4">
+            <a href="/labhome/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">HOME</a>
+            <a href="/viewmrirequest/" class="py-2 px-4 text-white flex items-center justify-center bg-gray-600 rounded-md text-lg">MRI Request</a>
+            <a href="/index/" class="py-2 px-4 text-white flex items-center justify-center hover:bg-gray-600 hover:rounded-md text-lg">Log Out</a>
+        </div>
     </div>
-    <div class="w3-col s3">
-      <a href="/viewmrirequest/" class="w3-button w3-block w3-black">MRI REQUEST</a>
-    </div>
-
-      <div class="w3-col s3">
-      <a href="/index/" class="w3-button w3-block w3-black">Log Out</a>
-    </div>
-
-  </div>
 </div>
 
+<div class="container mx-auto px-4 py-8">
+    <div class="text-center mb-8 mt-7">
+        <h2 class="text-2xl font-bold text-blue-800">Patient's Information</h2>
+    </div>
 
-<!-- Contact/Area Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-
-<center>
-
-<br><br><br><br>
- <div class="container">
-	<table border="1">
-		<thead>
-            <tr>
-
-                <th>Patient Name </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                   Phone Number
-                </th>
-                <th>
-                    Doctor Name
-                 </th>
-                 <th>
-                    Doctor's Email
-                 </th>
-                 <th>
-                    Specification
-                 </th>
-                 <th>
-                   Upload Image
-                 </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            {{d}}
-            {% for d in data %}
-
-            <tr>
-
-                <td>
-                    {{d.6}}
-                </td>
-                <td>
-                    {{d.7}}
-                </td>
-                <td>
-                    {{d.8}}
-                </td>
-                <td>
-                    {{d.10}}
-                </td>
-                <td>
-                    {{d.11}}
-                </td>
-                <td>
-                    {{d.13}}
-                </td>
-                <td>
-
-                    <a href="/uploadimage/?id={{d.0}}">Upload Image</a>
-                </td>
-
-            </tr>
-            {% endfor %}
-
-        </tbody>
+    <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-lg shadow-lg">
+            <thead>
+                <tr class="bg-gradient-to-tr from-blue-900 to-gray-700 text-white">
+                    <th class="px-6 py-3">Patient Name</th>
+                    <th class="px-6 py-3">Email</th>
+                    <th class="px-6 py-3">Phone Number</th>
+                    <th class="px-6 py-3">Doctor Name</th>
+                    <th class="px-6 py-3">Doctor's Email</th>
+                    <th class="px-6 py-3">Specification</th>
+                    <th class="px-6 py-3">Upload Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in data %}
+                <tr class="bg-gray-200">
+                    <td class="border px-6 py-4">{{ d.6 }}</td>
+                    <td class="border px-6 py-4">{{ d.7 }}</td>
+                    <td class="border px-6 py-4">{{ d.8 }}</td>
+                    <td class="border px-6 py-4">{{ d.10 }}</td>
+                    <td class="border px-6 py-4">{{ d.11 }}</td>
+                    <td class="border px-6 py-4">{{ d.13 }}</td>
+                    <td class="border px-6 py-4"><a href="/uploadimage/?id={{ d.0 }}" class="text-blue-500 hover:underline">Upload Image</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
+    </div>
 </div>
-</center>
-    {% if msg %}
-<script>
-	alert('{{msg}}')
-</script>
-{% endif %}
-
-{% endblock %}
-  </div>
-</div>
-
-<!-- End page content -->
-</div>
-
-
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-}
-document.getElementById("myLink").click();
-</script>
 
 </body>
 </html>

@@ -6,7 +6,7 @@ def denoise(image):
   
     from matplotlib import pyplot as plt
     print("../static"+image)
-    img = cv2.imread("E:\jeena project\MRI Image Denoising\clinicapp\static"+image)
+    img = cv2.imread("D:\MRI\MRI-image-denoising\clinicapp\static"+image)
     print(img)
     b,g,r = cv2.split(img)           # get b,g,r
     rgb_img = cv2.merge([r,g,b])     # switch it to rgb

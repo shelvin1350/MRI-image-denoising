@@ -4,94 +4,43 @@
 <head>
 <title>MRI Image Denoising</title>
 <meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
 <style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
 
-.bgimg {
-  background-position: center;
-  background-size: cover;
-  background-image: url("{% static '/images/doctor.jpg' %}");
-  min-height: 100%;
-}
-
-.menu {
-  display: none;
-}
 </style>
 </head>
 <body>
 
-<!-- Links (sit on top) -->
-<div class="w3-top">
-  <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
-      <a href="/adminhome/" class="w3-button w3-block w3-black" style="font-family=serif">HOME</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="/adddoctor/" class="w3-button w3-block w3-black">Add Doctor</a>
-    </div>
-    <div class="w3-col s3">
-      <a href="/labreg/" class="w3-button w3-block w3-black">Add Lab</a>
-    </div>
-      <div class="w3-col s3">
-      <a href="/adminviewdoctors/" class="w3-button w3-block w3-black">Doctors</a>
-    </div>
-      <div class="w3-col s3">
-      <a href="/viewlab/" class="w3-button w3-block w3-black">Lab</a>
-    </div>
-      <div class="w3-col s3">
-      <a href="/index/" class="w3-button w3-block w3-black">Log Out</a>
-    </div>
-
-  </div>
-</div>
-
+ <!-- Links (sit on top) -->
+r
 <!-- Header with image -->
-<header class="bgimg w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-middle w3-center">
-    <span class="w3-text-black" style="font-size:90px; font-family:serif;">MRI IMAGE<br>Denoising</span>
+<header class="bgimg w-full h-52 bg-cover bg-center relative">
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <h1 class="text-white text-center text-4xl md:text-6xl font-serif">Admin Panel</h1>
   </div>
 </header>
 
-<!-- Add a background color and large text to the whole page -->
-<div class="w3-sand w3-grayscale w3-large">
-
 <!-- About Container -->
 <div class="w3-container" id="about">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE CAFE</span></h5>
-    <p>Noise is the unwanted energy which is generally intervened during the acquisition, transmission, and/or reconstruction of an image. Though the noise cannot be altogether eliminated, however, it can be reduced at acquisition time. It is an inexpensive way  for the appointment booking, doctor refering and image uploading for lab</p>
-
-    <img src="{% static '/images/doctor.jpg' %}" style="width:100%;max-width:1000px" class="w3-margin-top">
+  <div class="w3-content mx-auto max-w-4xl py-12">
     
-<!-- Footer -->
-<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-  <p></p>
-</footer>
+    <h5 class="text-center text-2xl font-bold">ABOUT MRI IMAGE DENOISING</h5>
+    <p class="text-lg text-center mt-4">Noise is the unwanted energy which is generally intervened during the acquisition, transmission, and/or reconstruction of an image. Though the noise cannot be altogether eliminated, however, it can be reduced at acquisition time. It is an inexpensive way for the appointment booking, doctor referring, and image uploading for the lab.</p>
+    <div class="mt-8">
+      <img src="{% static '/images/doctor.jpg' %}" alt="Doctor" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg">
+    </div>
+  </div>
+</div>
 
-<script>
-// Tabbed Menu
-function openMenu(evt, menuName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("menu");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
-  }
-  document.getElementById(menuName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
-}
-document.getElementById("myLink").click();
-</script>
+<!-- Footer -->
+<footer class="w-full bg-gray-200 py-8">
+  <div class="w3-center">
+    <p class="text-lg">Footer Content Goes Here</p>
+  </div>
+</footer>
 
 </body>
 </html>
